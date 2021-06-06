@@ -1008,7 +1008,7 @@ loading mode.  If the autoloads file is kept up-to-date using
 needed in local dependencies too.
 
 
-== Build system
+=== Build system
 
 Eldev comes with quite a sophisticated build system.  While by default
 it only knows how to build packages, byte-compile `.el` files and make
@@ -1019,7 +1019,7 @@ should be included in the final package.
 The main command is predictably called `build`.  There are also
 several related commands which will be discussed in the next sections.
 
-=== Targets
+==== Targets
 
 Eldev's build system is based on _targets_. Targets come in two
 flavors: _real_ and _virtual_. First type of targets corresponds to
@@ -1127,7 +1127,7 @@ arguments.  For example:
     $ eldev targets test
 
 [#packaging]
-=== Building packages
+==== Building packages
 
 To build an Elisp package out of your project, use command `package`:
 
@@ -1155,7 +1155,7 @@ output.  Otherwise it is a bit tricky to find the package, especially
 if you don’t use `--force-version` option.  As an optimisation, you
 can also reuse previous package file if Eldev says “up-to-date”.
 
-=== Byte-compiling
+==== Byte-compiling
 
 You can use Eldev to byte-compile your project.  Indirectly, this can
 be done by <<loading-modes,selecting appropriate loading mode>> for
@@ -1273,7 +1273,7 @@ with option `-v` or `-t` to see it):
     Done building “sources” for virtual target ‘:compile’
 
 [#cleaning]
-=== Cleaning
+==== Cleaning
 
 While cleaning is not really part of the build system, it is closely
 related.  Cleaning allows you to remove various generated files that
@@ -1329,7 +1329,7 @@ deleted, without actually deleting it.
 
 
 [#testing]
-== Testing
+=== Testing
 
 Eldev has built-in support for running regression/unit tests of your
 project.  Currently, Eldev supports only {uri-ert}[ERT] and
@@ -1399,7 +1399,7 @@ it is a good idea to set it as the default in file `~/.eldev/config`.
 Finally, you can even write your own runner.
 
 [#frameworks]
-=== Frameworks
+==== Frameworks
 
 As stated above, Eldev supports {uri-ert}[ERT] (Emacs built-in) and
 {uri-buttercup}[Buttercup] testing frameworks.  Normally, you don’t
@@ -1447,7 +1447,7 @@ Things that won’t work with Buttercup at the moment:
 Unlike <<ert,ERT>>, Buttercup also has no special selectors that base
 on the previous run’s results.
 
-=== Loading test files
+==== Loading test files
 
 {since-0-5} There appears to be two common ways of using tests: 1)
 they are loaded from project root; 2) subdirectory `test/` (or
@@ -1485,7 +1485,7 @@ If you want to switch to the first way and avoid special forms in file
 'tests/test-helper)`.
 
 [#test-results]
-=== Reusing previous test results
+==== Reusing previous test results
 
 <<ert,ERT>> provides a few selectors that operate on tests’ last
 results.  Even though different Eldev executions will run in different
@@ -1507,7 +1507,7 @@ selectors] — other “special” selectors (e.g. `:new` or `:unexpected`)
 also work.
 
 [#testing-simplifications]
-=== Testing command line simplifications
+==== Testing command line simplifications
 
 When variable `eldev-dwim` (“do what I mean”) is non-nil (as by
 default), Eldev supports a few simplifications of the command line to
