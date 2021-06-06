@@ -243,7 +243,7 @@ you don’t need to type the full path again and again.
 Here `DIRECTORY` is the location of `eldev` executable should be put.
 It should be in `PATH` environment variable, or else you will need to
 specify full path each time you invoke Eldev.  You probably have
-sth. like `~/bin` in your `PATH` already, which would be a good value
+something like `~/bin` in your `PATH` already, which would be a good value
 for `DIRECTORY`.  You could even install in e.g. `/usr/local/bin` —
 but make sure you have permissions first.
 
