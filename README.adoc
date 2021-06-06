@@ -338,6 +338,14 @@ switch back to the latest stable version (as recommended), supply `-d`
 
     $ eldev upgrade-self -d
 
+=== How to control the package cache
+Cache usage is not controllable from command line.  However, you can
+customize it somewhat in `~/.eldev/config`.  Variable
+`eldev-enable-global-package-archive-cache` lets you disable the
+global cache outright.  Using
+`eldev-global-cache-archive-contents-max-age` you can adjust how long
+cached copies of `archive-contents` stay valid.
+
 === How to add commands
 
 Eldev has lots of standard commands, but sometimes you need to define
@@ -914,14 +922,6 @@ By default, downloaded packages stay cached indefinitely, while
 archive contents expires in one hour.  However, if you use command
 `upgrade` or `upgrade-self`, package archive contents is always
 refreshed.
-
-Cache usage is not controllable from command line.  However, you can
-customize it somewhat in `~/.eldev/config`.  Variable
-`eldev-enable-global-package-archive-cache` lets you disable the
-global cache outright.  Using
-`eldev-global-cache-archive-contents-max-age` you can adjust how long
-cached copies of `archive-contents` stay valid.
-
 
 [#loading-modes]
 === Loading modes
