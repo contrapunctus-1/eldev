@@ -338,8 +338,6 @@ switch back to the latest stable version (as recommended), supply `-d`
 
     $ eldev upgrade-self -d
 
-
-
 === How to add commands
 
 Eldev has lots of standard commands, but sometimes you need to define
@@ -514,10 +512,9 @@ dependencies.
 After this step, Eldev is ready to work with your project.
 
 [#setup-procedure]
-=== Setup procedure
+=== Configuration files
 
-Now that we have created file `Eldev`, it makes sense to go over the
-full startup process:
+The full startup process of Eldev looks like this -
 
 * Load file `~/.eldev/config`
 * Load file `Eldev` in the current directory
