@@ -1564,7 +1564,7 @@ If you dislike these simplifications, set `eldev-dwim` to `nil` in
 
 
 [#linting]
-== Linting
+=== Linting
 
 {since-0-2} It might be useful to ensure that your source code follows
 certain standards.  There are many programs called linters that can
@@ -1602,7 +1602,7 @@ least one warning from any requested linter.  This simplifies using
 linting in <<continuous-integration,continuous integration>> should
 you want to do that.
 
-== Quickly evaluating expressions
+=== Quickly evaluating expressions
 
 It is often useful to evaluate Elisp expressions in context of the
 project you develop — and probably using functions from the project.
@@ -1640,7 +1640,7 @@ It can also make sense to change the variable’s value in `Eldev-local`
 if you want certain features to always be available for quick testing.
 
 
-== Running Emacs
+=== Running Emacs
 
 Sometimes you want to run Emacs with _just_ your project installed and
 see how it works without any customization.  You can achieve this in
