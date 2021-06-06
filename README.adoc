@@ -262,25 +262,6 @@ Now each time Eldev is executed, it will use the sources at
 `ELDEV_LOCAL`.  You can even modify it and see how that affects Eldev
 immediately.
 
-=== Upgrading Eldev
-
-Eldev bootstraps itself when needed, but won’t automatically fetch new
-versions.  To upgrade it later, explicitly run (from any directory):
-
-    $ eldev upgrade-self
-
-By default it uses MELPA Stable.  If you want to test or use some not
-yet officially released version, try:
-
-    $ eldev --unstable upgrade-self
-
-This will make it use MELPA Unstable for upgrading.  If you want to
-switch back to the latest stable version (as recommended), supply `-d`
-(`--downgrade`) option to the command:
-
-    $ eldev upgrade-self -d
-
-
 == Safety concerns
 
 TIP: In general, it is not recommended to execute Eldev, GNU Make,
@@ -336,7 +317,29 @@ only exception is that global options must be specified before the command
 name, and command-specific options after the commands.
 
 
-== Initializing a project
+== How-to guides
+=== How to upgrade Eldev
+
+Eldev bootstraps itself when needed, but won’t automatically fetch new
+versions.  To upgrade it later, explicitly run (from any directory):
+
+    $ eldev upgrade-self
+
+By default it uses MELPA Stable.  If you want to test or use some not
+yet officially released version, try:
+
+    $ eldev --unstable upgrade-self
+
+This will make it use MELPA Unstable for upgrading.  If you want to
+switch back to the latest stable version (as recommended), supply `-d`
+(`--downgrade`) option to the command:
+
+    $ eldev upgrade-self -d
+
+
+
+== Explanation
+=== Initializing a project
 
 When Eldev starts up, it configures itself for the project in the
 directory where it is run from.  This is done by loading Elisp file
@@ -365,7 +368,7 @@ dependencies.
 After this step, Eldev is ready to work with your project.
 
 [#setup-procedure]
-== Setup procedure in details
+=== Setup procedure
 
 Now that we have created file `Eldev`, it makes sense to go over the
 full startup process:
@@ -464,7 +467,7 @@ usual in Eldev, you can make it the default in file `~/.eldev/config`
 if you want.
 
 
-== Project dependencies
+=== Project dependencies
 
 Eldev picks up project dependencies from package declaration,
 i.e. usually from `Package-Requires` header in the project’s main
@@ -778,7 +781,7 @@ cached copies of `archive-contents` stay valid.
 
 
 [#loading-modes]
-== Loading modes
+=== Loading modes
 
 In Eldev the project’s package and its local dependencies have
 _loading modes_.  This affects exactly how the package (that of the
