@@ -58,11 +58,11 @@ image:http://stable.melpa.org/packages/eldev-badge.svg[MELPA Stable, link=http:/
 image:https://github.com/doublep/eldev/workflows/CI/badge.svg[CI, link=https://github.com/doublep/eldev/actions?query=workflow%3ACI]
 
 Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted
-solely at Elisp projects.  It is an alternative to Cask.  Unlike Cask,
+solely at Elisp projects. It is an alternative to Cask. Unlike Cask,
 Eldev itself is fully written in Elisp and its configuration files are
-also Elisp programs.  If you are familiar with Java world, Cask can be
-seen as a parallel to Maven — it uses project _description_, while
-Eldev is sort of a parallel to Gradle — its configuration is a
+also Elisp programs. If you are familiar with the Java world, Cask can
+be seen as a parallel to Maven — it uses project _description_, while
+Eldev is a sort of parallel to Gradle — its configuration is a
 _program_ on its own.
 
 toc::[]
