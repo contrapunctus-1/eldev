@@ -88,7 +88,7 @@ Drawbacks:
 
 * Eldev doesn’t run the project being tested/built in a separate
   process, so it is not as pure as Cask.  However, Emacs packages
-  won’t live in a sterile world anyway: typical user setup will
+  won’t live in a sterile world anyway - a typical user setup will
   include dozens of other packages.
 * Eldev depends much more on Emacs internals.  It is more likely to
   break with future Emacs versions than Cask.
@@ -522,8 +522,8 @@ name, and command-specific options after the commands.
 When Eldev starts up, it configures itself for the project in the
 directory where it is run from.  This is done by loading Elisp file
 called `Eldev` (without extension!) in the current directory.  This
-file is similar to Make’s `Makefile` or Cask’s `Cask`.  But even more
-so to Gradle’s `build.gradle`: because it is a program.  File `Eldev`
+file is similar to Make’s `Makefile` or Cask’s `Cask`, but even more
+so to Gradle’s `build.gradle`, because it is a program.  File `Eldev`
 is not strictly required, but nearly all projects will have one.  It
 is also generally recommended to create it even if empty, because
 otherwise some tools (e.g. {uri-flycheck-eldev}[flycheck-eldev],
@@ -1806,9 +1806,9 @@ are tools that can be used for this: at least {uri-evm}[EVM] and
 
 One of the tools to install Emacs is {uri-evm}[EVM].  Steve Purcell
 (the author of `nix-emacs-ci`) mentions “various issues” he has had
-with it, however many projects use it.  Apparently, you need to fix
-Ubuntu distribution used at Travis CI to Trusty for EVM-provided
-binaries.  Also note that EVM provides binaries only for Linux, so if
+with it. However, many projects use it.  Apparently, you need to fix
+the Ubuntu distribution used at Travis CI to Trusty for EVM-provided
+binaries.  Also, note that EVM only provides binaries for Linux, so if
 you want test on macOS too, `nix-emacs-ci` is a better choice.
 
 If you also want to try it, Eldev provides a simple script
