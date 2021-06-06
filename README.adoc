@@ -1687,18 +1687,18 @@ will not see your usual packages.  To illustrate:
 [#different-emacs-versions]
 == Executing on different Emacs versions
 
-Since Eldev itself is an Elisp program, version of Emacs you use can
-affect any aspect of execution — even before it gets to running
-something out of your project.  Therefore, inside its “cache”
-directory called `.eldev`, the utility creates a subdirectory named
-after Emacs version it is executed on.  If it is run with a different
+Since Eldev itself is an Elisp program, the version of Emacs you use
+can affect any aspect of its execution — even before it gets around to
+running something out of your project.  Therefore, inside its “cache”
+directory called `.eldev`, Eldev creates a subdirectory named after
+the Emacs version it is executed on.  If it is run with a different
 Emacs, it will not use dependencies or previous test results, but
 rather install or recompute them from scratch.
 
-Normally, Eldev uses command `emacs` that is supposed to be resolvable
-through `PATH` environment variable.  However, you can always tell it
-to use a different Emacs version by setting either `ELDEV_EMACS` or
-just `EMACS` in the environment, e.g.:
+Normally, Eldev uses the command `emacs` that is supposed to be
+resolvable through the `PATH` environment variable.  However, you can
+always tell it to use a different Emacs version by setting either
+`ELDEV_EMACS` or just `EMACS` in the environment, e.g. -
 
     $ EMACS=emacs25 eldev eval emacs-version
 
@@ -1706,8 +1706,8 @@ This is especially useful for testing your project with different
 Emacs versions.
 
 Remember, however, that Eldev cannot separate byte-compiled files
-(`.elc`) from sources.  From documentation of
-`byte-compile-dest-file-function`:
+(`.elc`) from sources.  From the documentation of
+`byte-compile-dest-file-function` -
 
 ____
 Note that the assumption that the source and compiled files are found
