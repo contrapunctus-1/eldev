@@ -2083,58 +2083,6 @@ maybe in `Eldev-local` — if you need something extra only for one
 specific project that you maintain.
 
 [#hooks]
-=== Hooks
-
-Eldev defines several hooks executed at different times (more might be
-added later).  Due to historical reasons, Eldev doesn’t follow the Emacs
-naming convention, where `-hook` is only used for standard hooks (i.e. those
-not accepting any arguments), and `-functions` for other cases - functions for many of the hooks listed below do receive arguments.
-
-`eldev-executing-command-hook (COMMAND)`::
-
-    Run before executing any command.  Command name (as a symbol) is
-    passed to the hook’s functions as the only argument.  This is
-    always the “canonical” command name, even if it is executed using
-    an alias.
-
-`eldev-COMMAND-hook`::
-
-    Run before executing specific command, functions have no
-    arguments.  Eldev itself uses it (i.e. in its file `Eldev`) to
-    print a disclaimer about its fairly slow tests.
-
-{since-0-2} `eldev-load-dependencies-hook (TYPE ADDITIONAL-SETS)`::
-
-    Executed after successfully loading dependencies.  Functions are
-    called with arguments `TYPE` and `ADDITIONAL-SETS`.  `TYPE` is
-    either `t` if the project is being loaded for actual use, symbol
-    `load-only` if it is loaded only for side effect (e.g. to build a
-    tree of its dependencies), and `nil` if invoked from
-    `eldev-load-extra-dependencies` (i.e. if the project is not being
-    loaded at all: only some additional sets).  The second is a list
-    of <<additional-dependencies,additional dependency sets>>.
-
-{since-0-6} `eldev-before-loading-dependencies-hook (TYPE ADDITIONAL-SETS)`::
-
-    Similar to the previous hook, but called _before_ dependencies are
-    loaded.  Function arguments are the same.
-
-{since-0-1-1} `eldev-build-system-hook`::
-
-    Hook executed whenever build system is used.  This is useful since
-    at least commands `build`, `compile` and `package` invoke the
-    build system: it would be impractical to add the same function to
-    all three hooks.
-
-{since-0-2} `eldev-test-FRAMEWORK-hook (SELECTORS)`::
-
-    Called immediately before executing tests with given framework
-    (<<ert,ERT>> or <<buttercup,Buttercup>>).  Functions on the hook
-    get passed `SELECTORS` as the only argument.  At this point
-    project dependencies and additional set `test` will have been
-    loaded already, so functions can `require` features from the
-    project.
-
 === Writing builders
 
 Eldev build system provides standard builders that cover all basic
@@ -2466,6 +2414,58 @@ FIXME
 
 
 == Reference
+=== Hooks
+
+Eldev defines several hooks executed at different times (more might be
+added later).  Due to historical reasons, Eldev doesn’t follow the Emacs
+naming convention, where `-hook` is only used for standard hooks (i.e. those
+not accepting any arguments), and `-functions` for other cases - functions for many of the hooks listed below do receive arguments.
+
+`eldev-executing-command-hook (COMMAND)`::
+
+    Run before executing any command.  Command name (as a symbol) is
+    passed to the hook’s functions as the only argument.  This is
+    always the “canonical” command name, even if it is executed using
+    an alias.
+
+`eldev-COMMAND-hook`::
+
+    Run before executing specific command, functions have no
+    arguments.  Eldev itself uses it (i.e. in its file `Eldev`) to
+    print a disclaimer about its fairly slow tests.
+
+{since-0-2} `eldev-load-dependencies-hook (TYPE ADDITIONAL-SETS)`::
+
+    Executed after successfully loading dependencies.  Functions are
+    called with arguments `TYPE` and `ADDITIONAL-SETS`.  `TYPE` is
+    either `t` if the project is being loaded for actual use, symbol
+    `load-only` if it is loaded only for side effect (e.g. to build a
+    tree of its dependencies), and `nil` if invoked from
+    `eldev-load-extra-dependencies` (i.e. if the project is not being
+    loaded at all: only some additional sets).  The second is a list
+    of <<additional-dependencies,additional dependency sets>>.
+
+{since-0-6} `eldev-before-loading-dependencies-hook (TYPE ADDITIONAL-SETS)`::
+
+    Similar to the previous hook, but called _before_ dependencies are
+    loaded.  Function arguments are the same.
+
+{since-0-1-1} `eldev-build-system-hook`::
+
+    Hook executed whenever build system is used.  This is useful since
+    at least commands `build`, `compile` and `package` invoke the
+    build system: it would be impractical to add the same function to
+    all three hooks.
+
+{since-0-2} `eldev-test-FRAMEWORK-hook (SELECTORS)`::
+
+    Called immediately before executing tests with given framework
+    (<<ert,ERT>> or <<buttercup,Buttercup>>).  Functions on the hook
+    get passed `SELECTORS` as the only argument.  At this point
+    project dependencies and additional set `test` will have been
+    loaded already, so functions can `require` features from the
+    project.
+
 === Influential environment variables
 
 A few environment variables can affect Eldev’s behavior.
