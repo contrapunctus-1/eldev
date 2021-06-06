@@ -1337,17 +1337,13 @@ project.  Currently, Eldev supports only {uri-ert}[ERT] and
 request in the issue tracker if you are interested in a different
 library.
 
-Simply executing
+By default, all tests are expected to be in files named `test.el`,
+`tests.el`, `+*-test.el+`, `+*-tests.el+` or in `test` or `tests`
+subdirectories of the project root. But you can always change the
+value of `eldev-test-fileset` variable in the project’s `Eldev` as
+appropriate.
 
-    $ eldev test
-
-will run all your tests.  By default, all tests are expected to be in
-files named `test.el`, `tests.el`, `+*-test.el+`, `+*-tests.el+` or in
-`test` or `tests` subdirectories of the project root.  But you can
-always change the value of `eldev-test-fileset` variable in the
-project’s `Eldev` as appropriate.
-
-By default, the command runs all available tests.  However, during
+By default, `$ eldev test` runs all available tests.  However, during
 development you often need to run one or a few tests only — when you
 hunt a specific bug, for example.  Eldev provides two ways to select
 which tests to run.
