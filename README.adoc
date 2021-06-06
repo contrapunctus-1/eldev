@@ -920,13 +920,13 @@ several related commands which will be discussed in the next sections.
 
 === Targets
 
-Build system is based on _targets_.  Targets come in two kinds: _real_
-and _virtual_.  First type of targets corresponds to files — not
-necessarily already existing.  When needed, such targets get rebuilt
-and the files are (re)generated in process.  Targets of the second
-type always have names that begin with “:” (like keywords in Elisp).
-Most import virtual target is called `:default` — this is what Eldev
-will build if you don’t request anything explicitly.
+Eldev's build system is based on _targets_. Targets come in two
+flavors: _real_ and _virtual_. First type of targets corresponds to
+files — not necessarily already existing. When needed, such targets
+get rebuilt and the files are (re)generated in process. Targets of the
+second type always have names that begin with “:” (like keywords in
+Elisp). Most import virtual target is called `:default` — this is what
+Eldev will build if you don’t request anything explicitly.
 
 To find all targets in a project (more precisely, its `main`
 <<target-sets,target set>>):
