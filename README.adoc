@@ -1,3 +1,4 @@
+// -*- sentence-end-double-space: t; -*-
 :toc: macro
 :toc-title: Table of contents
 :source-language: lisp
@@ -58,11 +59,11 @@ image:http://stable.melpa.org/packages/eldev-badge.svg[MELPA Stable, link=http:/
 image:https://github.com/doublep/eldev/workflows/CI/badge.svg[CI, link=https://github.com/doublep/eldev/actions?query=workflow%3ACI]
 
 Eldev (Elisp Development Tool) is an Emacs-based build tool, targeted
-solely at Elisp projects. It is an alternative to Cask. Unlike Cask,
+solely at Elisp projects.  It is an alternative to Cask.  Unlike Cask,
 Eldev itself is fully written in Elisp and its configuration files are
-also Elisp programs. If you are familiar with the Java world, Cask can
-be seen as a parallel to Maven — it uses project _description_, while
-Eldev is a sort of parallel to Gradle — its configuration is a
+also Elisp programs.  If you are familiar with the Java world, Cask
+can be seen as a parallel to Maven — it uses project _description_,
+while Eldev is a sort of parallel to Gradle — its configuration is a
 _program_ on its own.
 
 toc::[]
@@ -330,10 +331,10 @@ Like with <<testing-simplifications,testing>>, you can omit `-f`
 === How to exclude linters from being run
 
 Some projects may decide to follow the advice of certain linters, but
-not others. You can explicitly tell Eldev about a project’s policy by
+not others.  You can explicitly tell Eldev about a project’s policy by
 adjusting one or more of the variables `eldev-lint-default`,
 `eldev-lint-default-excluded` and `eldev-lint-disabled` in file
-`Eldev`. All of these variables affect exactly which linters Eldev
+`Eldev`.  All of these variables affect exactly which linters Eldev
 starts when their names are not specified explicitly.
 
 === How to diagnose issues
@@ -1046,24 +1047,25 @@ several related commands which will be discussed in the next sections.
 
 ==== Targets
 
-Eldev's build system is based on _targets_. Targets come in two
-flavors: _real_ and _virtual_. First type of targets corresponds to
-files — not necessarily already existing. When needed, such targets
-get rebuilt and the files are (re)generated in process. Targets of the
-second type always have names that begin with “:” (like keywords in
-Elisp). The most important virtual target is called `:default` — this
-is what Eldev will build if you don’t request anything explicitly.
+Eldev's build system is based on _targets_.  Targets come in two
+flavors: _real_ and _virtual_.  First type of targets corresponds to
+files — not necessarily already existing.  When needed, such targets
+get rebuilt and the files are (re)generated in process.  Targets of
+the second type always have names that begin with “:” (like keywords
+in Elisp).  The most important virtual target is called `:default` —
+this is what Eldev will build if you don’t request anything
+explicitly.
 
 To find all targets in a project (more precisely, its `main`
 <<target-sets,target set>>):
 
     $ eldev targets
 
-A project’s targets form a tree. Before a higher-level target can be
+A project’s targets form a tree.  Before a higher-level target can be
 built, all of its children must be up-to-date, i.e. built first if
-necessary. In the tree you can also see the _sources_ for some
-targets. Those can be distinguished by lack of builder name in
-brackets. Additionally, if the output is colored, targets have a
+necessary.  In the tree you can also see the _sources_ for some
+targets.  Those can be distinguished by lack of builder name in
+brackets.  Additionally, if the output is colored, targets have a
 special color, while sources use the default text color.
 
 Here is how the target tree looks for the Eldev project itself (the
@@ -1364,7 +1366,7 @@ library.
 
 By default, all tests are expected to be in files named `test.el`,
 `tests.el`, `+*-test.el+`, `+*-tests.el+` or in `test` or `tests`
-subdirectories of the project root. But you can always change the
+subdirectories of the project root.  But you can always change the
 value of `eldev-test-fileset` variable in the project’s `Eldev` as
 appropriate.
 
@@ -1575,7 +1577,7 @@ linters and let them loose on your source code in `main` target set:
     $ eldev lint
 
 You don’t need to install anything additionally - Eldev will download
-and use the required packages by itself. Consequently, your first
+and use the required packages by itself.  Consequently, your first
 invocation of `lint` on a project might take some time, but subsequent
 runs will reuse the downloaded linters.
 
@@ -1592,7 +1594,7 @@ Currently, Eldev knows and uses the following linters:
   and actually optionally includes it.
 
 In the future, more linters can gain special treatmeant from Eldev
-(you can also leave a feature request in the issue tracker). The full
+(you can also leave a feature request in the issue tracker).  The full
 list can always be found using command `eldev lint --list`.
 
 Command `lint` sets Eldev’s exit status to non-zero if there is at
@@ -1964,8 +1966,8 @@ Eldev scripts.
 == Plugins
 
 {since-0-3} Plugins are activatable extensions to Eldev functionality.
-They provide features that are not needed for most projects and
-are therefore not enabled by default.  However, enabling a plugin is
+They provide features that are not needed for most projects and are
+therefore not enabled by default.  However, enabling a plugin is
 trivial — just add line:
 
 [source]
@@ -2056,8 +2058,8 @@ during continuous integration, all you need to do is:
 
 . Make sure that command `test` is executed during automated testing
   (e.g. in file `.travis.yml`) in `as-is`, `source` or `built-source`
-  <<loading-modes,loading mode>>.  If you want, you can run it
-  again additionally in `packaged` mode.
+  <<loading-modes,loading mode>>.  If you want, you can run it again
+  additionally in `packaged` mode.
 
 The plugin adds two options for command `test`: `--undercover` (`-u`)
 and `--undercover-report` (`-U`).  First option can be used to
@@ -2432,9 +2434,11 @@ FIXME
 === Hooks
 
 Eldev defines several hooks executed at different times (more might be
-added later).  Due to historical reasons, Eldev doesn’t follow the Emacs
-naming convention, where `-hook` is only used for standard hooks (i.e. those
-not accepting any arguments), and `-functions` for other cases - functions for many of the hooks listed below do receive arguments.
+added later).  Due to historical reasons, Eldev doesn’t follow the
+Emacs naming convention, where `-hook` is only used for standard hooks
+(i.e. those not accepting any arguments), and `-functions` for other
+cases - functions for many of the hooks listed below do receive
+arguments.
 
 `eldev-executing-command-hook (COMMAND)`::
 
