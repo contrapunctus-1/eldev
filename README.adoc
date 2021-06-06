@@ -380,6 +380,88 @@ corresponding function, passing all remaining parameters to it as
 strings.  The example command above just parrots the parameters back
 at user, in accordance to its name.
 
+=== How to define command options
+
+You have probably noticed that the command function we’ve defined
+doesn’t accept any options.  In fact, this is true for all commands in
+Eldev - options are not _passed_ to them.  Eldev takes a different
+approach - whenever a (recognized) option is encountered on the command
+line, the appropriate function is called, which is supposed to alter
+global state.  This way it is easy to share options between multiple
+commands when needed.
+
+With that in mind, let’s expand our example command with an option:
+
+[source]
+----
+(defvar mypackage-parrot-colorize-as nil)
+
+(eldev-defcommand mypackage-parrot (&rest parameters)
+  "Repeat parameters from the command line.  If you want, I can even
+colorize them!"
+  :parameters     "TEXT-TO-PARROT"
+  :aliases        (copycat ape)
+  (unless parameters
+    (signal 'eldev-wrong-command-usage `(t "Nothing to say")))
+  (let ((text (mapconcat #'identity parameters " ")))
+     (when mypackage-parrot-colorize-as
+       (setf text (eldev-colorize text mypackage-parrot-colorize-as)))
+     (eldev-output "%s" text)))
+
+(eldev-defoption mypackage-parrot-colorize (&optional style)
+  "Apply given STYLE to the parroted text (`section' if not specified)"
+  :options        (-c --colorize)
+  :optional-value STYLE
+  :for-command    parrot
+  (setf mypackage-parrot-colorize-as (intern (or style "section"))))
+----
+
+Definition of `mypackage-parrot` is updated, but there is nothing
+Eldev-specific here.  Let’s rather have a look at the option
+definition.
+
+Unlike command functions, the name of option functions is not important.
+Instead, what the option looks like on the command line is determined
+by `:options` keyword.  It can specify any number of alternatives, but
+they all must be either short-style (single `-` followed by one
+letter) or long-style (`--` followed by a longer name) options.  Some
+options take a value; it is determined by parameter `:optional-value`
+or `:value` (if the value is mandatory) and must match arguments in
+function definition.
+
+Options can be either global or command-specific.  In the latter case
+— the one you’ll typically need — you define to which command(s) the
+option applies using `:for-command` parameter.  In our case its value
+is a single command, but it can also be a list of commands.
+
+To test how the new option works, run:
+
+    $ eldev parrot -c Repeat this
+
+It should print text “Repeat this” in bold, unless you’ve disabled
+output colorizing.
+
+Note that the command doesn’t repeat “-c”, even though it appears on
+the command line.  That’s because Eldev doesn’t pass the options as
+parameters to commands - only non-option arguments remain.
+
+Documentation (i.e. output of `eldev help parrot`) for the command we
+defined above now automatically lists the accepted option:
+
+....
+Usage: eldev [OPTION...] parrot TEXT-TO-PARROT
+
+Command aliases: copycat, ape
+
+Options:
+  -c, --colorize[=STYLE]
+                        Apply given STYLE to the parroted text (‘section’ if
+                        not specified)
+
+Repeat parameters from the command line.  If you want, I can even
+colorize them!
+....
+
 == Explanation
 === Initializing a project
 
@@ -2324,88 +2406,6 @@ removes generated targets.
 Parameters `:name`, `:short-name`, `:message` and `:briefdoc` are all
 fully presentational and thus not very important.  But if you want to
 write a nice and polished builder, investigate them too.
-
-==== Defining options
-
-You have probably noticed that the command function we’ve defined
-doesn’t accept any options.  In fact, this is true for all commands in
-Eldev - options are not _passed_ to them.  Eldev takes a different
-approach - whenever a (recognized) option is encountered on the command
-line, the appropriate function is called, which is supposed to alter
-global state.  This way it is easy to share options between multiple
-commands when needed.
-
-With that in mind, let’s expand our example command with an option:
-
-[source]
-----
-(defvar mypackage-parrot-colorize-as nil)
-
-(eldev-defcommand mypackage-parrot (&rest parameters)
-  "Repeat parameters from the command line.  If you want, I can even
-colorize them!"
-  :parameters     "TEXT-TO-PARROT"
-  :aliases        (copycat ape)
-  (unless parameters
-    (signal 'eldev-wrong-command-usage `(t "Nothing to say")))
-  (let ((text (mapconcat #'identity parameters " ")))
-     (when mypackage-parrot-colorize-as
-       (setf text (eldev-colorize text mypackage-parrot-colorize-as)))
-     (eldev-output "%s" text)))
-
-(eldev-defoption mypackage-parrot-colorize (&optional style)
-  "Apply given STYLE to the parroted text (`section' if not specified)"
-  :options        (-c --colorize)
-  :optional-value STYLE
-  :for-command    parrot
-  (setf mypackage-parrot-colorize-as (intern (or style "section"))))
-----
-
-Definition of `mypackage-parrot` is updated, but there is nothing
-Eldev-specific here.  Let’s rather have a look at the option
-definition.
-
-Unlike command functions, the name of option functions is not important.
-Instead, what the option looks like on the command line is determined
-by `:options` keyword.  It can specify any number of alternatives, but
-they all must be either short-style (single `-` followed by one
-letter) or long-style (`--` followed by a longer name) options.  Some
-options take a value; it is determined by parameter `:optional-value`
-or `:value` (if the value is mandatory) and must match arguments in
-function definition.
-
-Options can be either global or command-specific.  In the latter case
-— the one you’ll typically need — you define to which command(s) the
-option applies using `:for-command` parameter.  In our case its value
-is a single command, but it can also be a list of commands.
-
-To test how the new option works, run:
-
-    $ eldev parrot -c Repeat this
-
-It should print text “Repeat this” in bold, unless you’ve disabled
-output colorizing.
-
-Note that the command doesn’t repeat “-c”, even though it appears on
-the command line.  That’s because Eldev doesn’t pass the options as
-parameters to commands - only non-option arguments remain.
-
-Documentation (i.e. output of `eldev help parrot`) for the command we
-defined above now automatically lists the accepted option:
-
-....
-Usage: eldev [OPTION...] parrot TEXT-TO-PARROT
-
-Command aliases: copycat, ape
-
-Options:
-  -c, --colorize[=STYLE]
-                        Apply given STYLE to the parroted text (‘section’ if
-                        not specified)
-
-Repeat parameters from the command line.  If you want, I can even
-colorize them!
-....
 
 === Custom test runners
 
