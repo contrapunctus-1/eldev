@@ -2465,7 +2465,8 @@ colorize them!
 FIXME
 
 
-== Influential environment variables
+== Reference
+=== Influential environment variables
 
 A few environment variables can affect Eldev’s behavior.
 
