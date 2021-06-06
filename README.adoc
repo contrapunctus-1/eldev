@@ -338,6 +338,48 @@ switch back to the latest stable version (as recommended), supply `-d`
 
 
 
+=== How to add commands
+
+Eldev has lots of standard commands, but sometimes you need to define
+yet more.  Commands should generally be defined for things that cannot
+be reformulated in terms of building targets.  If a command would just
+create a file, e.g. extract documentation from source code, an
+additional builder would be more suitable.
+
+Defining a command is not much more complicated than defining a normal
+Elisp function:
+
+[source]
+----
+(eldev-defcommand mypackage-parrot (&rest parameters)
+  "Repeat parameters from the command line."
+  :parameters     "TEXT-TO-PARROT"
+  :aliases        (copycat ape)
+  (unless parameters
+    (signal 'eldev-wrong-command-usage `(t "Nothing to say")))
+  (eldev-output "%s" (mapconcat #'identity parameters " ")))
+----
+
+Macro `eldev-defcommand` works much like `defun`, but additionally it
+adds the new function to the list of Eldev command handlers.  New
+command receives name built from the function name by removing package
+prefix.  If that doesn’t produce the needed result in your case
+(e.g. if package prefix is two words in your project), you can always
+specify name explicitly by using `:command` parameter.  You can also
+give your command any number of aliases, as shown above.
+
+Keyword `:parameter` describes what the command expects to see on the
+command line.  It is used when invoking `eldev help COMMAND` to
+improve documentation: all commands are automatically documented.  The
+short one-liner for `eldev help` is derived from the function’s
+documentation by taking the first sentence.  If this is not good
+enough in your case, use keyword `:briefdoc` to set it explicitly.
+
+When command is invoked from command line, Eldev calls the
+corresponding function, passing all remaining parameters to it as
+strings.  The example command above just parrots the parameters back
+at user, in accordance to its name.
+
 == Explanation
 === Initializing a project
 
@@ -2282,48 +2324,6 @@ removes generated targets.
 Parameters `:name`, `:short-name`, `:message` and `:briefdoc` are all
 fully presentational and thus not very important.  But if you want to
 write a nice and polished builder, investigate them too.
-
-=== Adding commands and options
-
-Eldev has lots of standard commands, but sometimes you need to define
-yet more.  Commands should generally be defined for things that cannot
-be reformulated in terms of building targets.  If a command would just
-create a file, e.g. extract documentation from source code, an
-additional builder would be more suitable.
-
-Defining a command is not much more complicated than defining a normal
-Elisp function:
-
-[source]
-----
-(eldev-defcommand mypackage-parrot (&rest parameters)
-  "Repeat parameters from the command line."
-  :parameters     "TEXT-TO-PARROT"
-  :aliases        (copycat ape)
-  (unless parameters
-    (signal 'eldev-wrong-command-usage `(t "Nothing to say")))
-  (eldev-output "%s" (mapconcat #'identity parameters " ")))
-----
-
-Macro `eldev-defcommand` works much like `defun`, but additionally it
-adds the new function to the list of Eldev command handlers.  New
-command receives name built from the function name by removing package
-prefix.  If that doesn’t produce the needed result in your case
-(e.g. if package prefix is two words in your project), you can always
-specify name explicitly by using `:command` parameter.  You can also
-give your command any number of aliases, as shown above.
-
-Keyword `:parameter` describes what the command expects to see on the
-command line.  It is used when invoking `eldev help COMMAND` to
-improve documentation: all commands are automatically documented.  The
-short one-liner for `eldev help` is derived from the function’s
-documentation by taking the first sentence.  If this is not good
-enough in your case, use keyword `:briefdoc` to set it explicitly.
-
-When command is invoked from command line, Eldev calls the
-corresponding function, passing all remaining parameters to it as
-strings.  The example command above just parrots the parameters back
-at user, in accordance to its name.
 
 ==== Defining options
 
