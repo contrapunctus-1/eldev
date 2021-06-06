@@ -2329,14 +2329,13 @@ write a nice and polished builder, investigate them too.
 
 You have probably noticed that the command function we’ve defined
 doesn’t accept any options.  In fact, this is true for all commands in
-Eldev: options are not _passed_ to them.  Eldev takes a different
-approach: whenever a (recognized) option is encountered on the command
-line, appropriate function is called, which is supposed to alter
+Eldev - options are not _passed_ to them.  Eldev takes a different
+approach - whenever a (recognized) option is encountered on the command
+line, the appropriate function is called, which is supposed to alter
 global state.  This way it is easy to share options between multiple
 commands when needed.
 
-So, with that in mind, let’s expand our example command with an
-option:
+With that in mind, let’s expand our example command with an option:
 
 [source]
 ----
@@ -2366,8 +2365,8 @@ Definition of `mypackage-parrot` is updated, but there is nothing
 Eldev-specific here.  Let’s rather have a look at the option
 definition.
 
-Unlike for command function, name of option function is not important.
-Instead, how the option looks like on the command line is determined
+Unlike command functions, the name of option functions is not important.
+Instead, what the option looks like on the command line is determined
 by `:options` keyword.  It can specify any number of alternatives, but
 they all must be either short-style (single `-` followed by one
 letter) or long-style (`--` followed by a longer name) options.  Some
@@ -2389,7 +2388,7 @@ output colorizing.
 
 Note that the command doesn’t repeat “-c”, even though it appears on
 the command line.  That’s because Eldev doesn’t pass the options as
-parameters to commands: only non-option arguments remain.
+parameters to commands - only non-option arguments remain.
 
 Documentation (i.e. output of `eldev help parrot`) for the command we
 defined above now automatically lists the accepted option:
