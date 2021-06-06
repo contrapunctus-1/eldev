@@ -332,8 +332,8 @@ assistance.  Also check out section on <<debugging-features,various
 debugging features>> discussed later.
 
 Eldev mostly follows GNU conventions in its command line.  Perhaps the
-only exception is that global options must be specified before command
-name and command-specific options — after it.
+only exception is that global options must be specified before the command
+name, and command-specific options after the commands.
 
 
 == Initializing a project
