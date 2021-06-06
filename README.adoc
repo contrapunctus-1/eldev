@@ -2086,10 +2086,9 @@ specific project that you maintain.
 === Hooks
 
 Eldev defines several hooks executed at different times (more might be
-added later).  Due to historical reasons, Eldev doesn’t follow Emacs
-naming convention on using `-hook` only for standard hooks (i.e. those
-not accepting any arguments) and `-functions` in other cases.
-Functions for many of the hooks listed below do receive arguments.
+added later).  Due to historical reasons, Eldev doesn’t follow the Emacs
+naming convention, where `-hook` is only used for standard hooks (i.e. those
+not accepting any arguments), and `-functions` for other cases - functions for many of the hooks listed below do receive arguments.
 
 `eldev-executing-command-hook (COMMAND)`::
 
