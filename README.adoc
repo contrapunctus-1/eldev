@@ -1544,15 +1544,15 @@ certain standards.  There are many programs called linters that can
 help you with this.  Several of them are also supported by Eldev and
 can be executed using the tool.
 
-In its simplest form `lint` command will execute all supported linters
-and let them loose on your source code in `main` target set:
+In its simplest form the `lint` command will execute all supported
+linters and let them loose on your source code in `main` target set:
 
     $ eldev lint
 
-You don’t need to install anything additionally: Eldev will download
-and use required packages itself.  Because of this, first linting in a
-project might take a while to prepare, but later the downloaded
-linters will be reused.
+You don’t need to install anything additionally - Eldev will download
+and use the required packages by itself. Consequently, your first
+invocation of `lint` on a project might take some time, but subsequent
+runs will reuse the downloaded linters.
 
 Currently, Eldev knows and uses the following linters:
 
@@ -1566,31 +1566,31 @@ Currently, Eldev knows and uses the following linters:
   for various errors — it is even more versatile than `package-lint`
   and actually optionally includes it.
 
-In future, more linters can gain special treatmeant from Eldev (you
-can also leave a feature request in the issue tracker).  The full list
-can always be found using command `eldev lint --list`.
+In the future, more linters can gain special treatmeant from Eldev
+(you can also leave a feature request in the issue tracker). The full
+list can always be found using command `eldev lint --list`.
 
-Running all the linters at once is not always what you want.  In such
-a case you can just specify name (or several) of the linter you want
-on the command line:
+Running all the linters at once is not always what you want, so you
+can just specify the name(s) of the linter(s) you want on the command
+line -
 
     $ eldev lint doc
 
 Names can be simplified by dropping words “check” and “lint” from
 them.  It is also possible to explicitly direct linters at certain
-files, rather than verifying all at once:
+files, rather than verifying all files at once -
 
     $ eldev lint re -f foo.el
 
 Like with <<testing-simplifications,testing>>, you can omit `-f`
 (`--file`) option above as long as variable `eldev-dwim` is non-nil.
 
-Some projects, however, may decide to follow advices of certain
-linters, but not the others.  You can explicitly tell Eldev about
-project’s policy by adjusting one or more of variables
+Some projects, however, may decide to follow the advice of certain
+linters, but not others. You can explicitly tell Eldev about a
+project’s policy by adjusting one or more of the variables
 `eldev-lint-default`, `eldev-lint-default-excluded` and
-`eldev-lint-disabled` in file `Eldev`.  All of these variables affect
-which linters exactly Eldev starts when their names are not specified
+`eldev-lint-disabled` in file `Eldev`. All of these variables affect
+exactly which linters Eldev starts when their names are not specified
 explicitly.
 
 Command `lint` sets Eldev’s exit status to non-zero if there is at
