@@ -311,6 +311,31 @@ touch code that you don’t plan running.
 
 == How-to guides
 === How to specify project files
+=== How to run specific linters
+Running all the linters at once is not always what you want, so you
+can just specify the name(s) of the linter(s) you want on the command
+line -
+
+    $ eldev lint doc
+
+Names can be simplified by dropping words “check” and “lint” from
+them.  It is also possible to explicitly direct linters at certain
+files, rather than verifying all files at once -
+
+    $ eldev lint re -f foo.el
+
+Like with <<testing-simplifications,testing>>, you can omit `-f`
+(`--file`) option above as long as variable `eldev-dwim` is non-nil.
+
+=== How to exclude linters from being run
+
+Some projects may decide to follow the advice of certain linters, but
+not others. You can explicitly tell Eldev about a project’s policy by
+adjusting one or more of the variables `eldev-lint-default`,
+`eldev-lint-default-excluded` and `eldev-lint-disabled` in file
+`Eldev`. All of these variables affect exactly which linters Eldev
+starts when their names are not specified explicitly.
+
 === How to diagnose issues
 Two most important global options to remember are `--trace` (`-t`) and
 `--debug` (`-d`).  With the first one, Eldev prints lots of additional
@@ -1570,34 +1595,10 @@ In the future, more linters can gain special treatmeant from Eldev
 (you can also leave a feature request in the issue tracker). The full
 list can always be found using command `eldev lint --list`.
 
-Running all the linters at once is not always what you want, so you
-can just specify the name(s) of the linter(s) you want on the command
-line -
-
-    $ eldev lint doc
-
-Names can be simplified by dropping words “check” and “lint” from
-them.  It is also possible to explicitly direct linters at certain
-files, rather than verifying all files at once -
-
-    $ eldev lint re -f foo.el
-
-Like with <<testing-simplifications,testing>>, you can omit `-f`
-(`--file`) option above as long as variable `eldev-dwim` is non-nil.
-
-Some projects, however, may decide to follow the advice of certain
-linters, but not others. You can explicitly tell Eldev about a
-project’s policy by adjusting one or more of the variables
-`eldev-lint-default`, `eldev-lint-default-excluded` and
-`eldev-lint-disabled` in file `Eldev`. All of these variables affect
-exactly which linters Eldev starts when their names are not specified
-explicitly.
-
 Command `lint` sets Eldev’s exit status to non-zero if there is at
 least one warning from any requested linter.  This simplifies using
 linting in <<continuous-integration,continuous integration>> should
 you want to do that.
-
 
 == Quickly evaluating expressions
 
