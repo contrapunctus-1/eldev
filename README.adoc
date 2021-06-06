@@ -2431,6 +2431,27 @@ FIXME
 
 
 == Reference
+=== User-facing variables
+// These need terse descriptions of their correct use - although docstrings can suffice.
+
+   - `eldev-project-main-file`
+   - `eldev-emacs-required-features`
+   - `eldev-emacs-default-command-line`
+   - `eldev-emacs-forward-variables`
+
+   Linting
+   - `eldev-lint-default`
+   - `eldev-lint-default-excluded`
+   - `eldev-lint-disabled`
+
+   Cache
+   - `eldev-enable-global-package-archive-cache`
+   - `eldev-global-cache-archive-contents-max-age`
+
+   Filesets
+   - `eldev-main-fileset`
+   - `eldev-test-fileset`
+   - `eldev-standard-excludes`
 === Hooks
 
 Eldev defines several hooks executed at different times (more might be
