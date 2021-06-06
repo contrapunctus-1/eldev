@@ -925,23 +925,23 @@ flavors: _real_ and _virtual_. First type of targets corresponds to
 files — not necessarily already existing. When needed, such targets
 get rebuilt and the files are (re)generated in process. Targets of the
 second type always have names that begin with “:” (like keywords in
-Elisp). Most import virtual target is called `:default` — this is what
-Eldev will build if you don’t request anything explicitly.
+Elisp). The most important virtual target is called `:default` — this
+is what Eldev will build if you don’t request anything explicitly.
 
 To find all targets in a project (more precisely, its `main`
 <<target-sets,target set>>):
 
     $ eldev targets
 
-Project’s targets form a tree.  Before a higher-level target can be
-built, all its children must be up-to-date, i.e. built first if
-necessary.  In the tree you can also see _sources_ for some targets.
-Those can be distinguished by lack of builder name in brackets.
-Additionally, if output is colored, targets have special color, while
-sources use default text color.
+A project’s targets form a tree. Before a higher-level target can be
+built, all of its children must be up-to-date, i.e. built first if
+necessary. In the tree you can also see the _sources_ for some
+targets. Those can be distinguished by lack of builder name in
+brackets. Additionally, if the output is colored, targets have a
+special color, while sources use the default text color.
 
-Here is how target tree looks for Eldev project itself (version may be
-different and more targets may be added in future):
+Here is how the target tree looks for the Eldev project itself (the
+version may be different and more targets may be added in the future):
 
     :default
         bin/eldev  [SUBST]
