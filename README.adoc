@@ -554,6 +554,17 @@ cached copies of `archive-contents` stay valid.
 1. Enable the autoload plugin by adding `(eldev-use-plugin 'autoloads)` to the project’s `Eldev` file.
 2. Run `$ eldev compile`
 
+=== How to collect code coverage statistics
+To have your project’s code coverage statistics automatically gathered
+during continuous integration, all you need to do is -
+. Activate the plugin by adding `(eldev-use-plugin 'undercover)` to your
+  project’s `Eldev` file.
+
+. Make sure that command `test` is executed during automated testing
+  (e.g. in file `.travis.yml`) in `as-is`, `source` or `built-source`
+  <<loading-modes,loading mode>>.  If you want, you can run it again
+  additionally in `packaged` mode.
+
 === How to add commands
 
 Eldev has lots of standard commands, but sometimes you need to define
@@ -2156,17 +2167,6 @@ default, behavior of the tool is unaltered (with the exception that
 reports are not merged), so effectively it will do nothing unless run
 on a supported <<continuous-integration,continuous integration>>
 server.
-
-To have your project’s code coverage statistics automatically gathered
-during continuous integration, all you need to do is:
-
-. Activate the plugin: add `(eldev-use-plugin 'undercover)` to your
-  project’s file `Eldev`.
-
-. Make sure that command `test` is executed during automated testing
-  (e.g. in file `.travis.yml`) in `as-is`, `source` or `built-source`
-  <<loading-modes,loading mode>>.  If you want, you can run it again
-  additionally in `packaged` mode.
 
 The plugin adds two options for command `test`: `--undercover` (`-u`)
 and `--undercover-report` (`-U`).  First option can be used to
