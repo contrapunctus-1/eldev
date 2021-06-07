@@ -1861,7 +1861,7 @@ will not see your usual packages.  To illustrate:
 
 
 [#different-emacs-versions]
-== Executing on different Emacs versions
+=== Running Eldev on different Emacs versions
 
 Since Eldev itself is an Elisp program, the version of Emacs you use
 can affect any aspect of its execution — even before it gets around to
