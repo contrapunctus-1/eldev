@@ -548,6 +548,12 @@ global cache outright.  Using
 `eldev-global-cache-archive-contents-max-age` you can adjust how long
 cached copies of `archive-contents` stay valid.
 
+=== How to generate autoloads
+// Are these correct?
+
+1. Enable the autoload plugin by adding `(eldev-use-plugin 'autoloads)` to the project’s `Eldev` file.
+2. Run `$ eldev compile`
+
 === How to add commands
 
 Eldev has lots of standard commands, but sometimes you need to define
@@ -2122,10 +2128,8 @@ autoloading functionality at all and having file
 `PACKAGE-autoloads.el` magically appear all the time in them would be
 annoying.
 
-To have autoloads automatically collected in your project, just
-activate the plugin: add form `(eldev-use-plugin 'autoloads)` to the
-project’s file `Eldev`.  You don’t need any additional steps to
-instruct Eldev how to use the generated file.  In fact, it is able to
+After the plugin is activated, no additional steps are needed to
+instruct Eldev for using the generated file.  In fact, it is able to
 do this even without the plugin: the plugin only takes cares to build
 and update the file as necessary.
 
