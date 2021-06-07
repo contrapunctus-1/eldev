@@ -73,8 +73,8 @@ toc::[]
 
 Eldev features:
 
-* Eldev configuration is Elisp.  It can change many defaults or even
-  define additional commands and options.
+* Eldev's configuration is Elisp.  The user can change many defaults
+  or even define additional commands and options.
 * Built-in support for regression/unit testing.
 * There are _four_ levels of configuration — you can customize most
   aspects of Eldev for your project needs and personal preferences.
@@ -324,7 +324,7 @@ files, rather than verifying all files at once -
 Like with <<testing-simplifications,testing>>, you can omit `-f`
 (`--file`) option above as long as variable `eldev-dwim` is non-nil.
 
-=== How to exclude linters from being run
+=== How to exclude specific linters
 
 Some projects may decide to follow the advice of certain linters, but
 not others.  You can explicitly tell Eldev about a project’s policy by
