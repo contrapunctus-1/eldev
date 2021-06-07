@@ -296,19 +296,13 @@ touch code that you don’t plan running.
 
    to initialize.
 
-2. Now you can run
+2. Now you can issue the following -
 
-   $ eldev build
-
-   to compile, and
+   $ eldev compile
 
    $ eldev test
 
-   to run tests.
-
-(Specifying package sources?)
-
-
+   $ eldev lint
 
 == How-to guides
 === How to specify project files
