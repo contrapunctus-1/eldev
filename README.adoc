@@ -545,7 +545,7 @@ dependencies.
 
 After this step, Eldev is ready to work with your project.
 
-[#setup-procedure]
+[#configuration-files]
 === Configuration files
 
 The full startup process of Eldev looks like this -
@@ -1983,7 +1983,7 @@ to file `Eldev` of your project.  For example:
 ----
 
 As for other configuration, you can also do it in `Eldev-local` or
-<<setup-procedure,other places>>.
+<<configuration-files,other places>>.
 
 In future, plugins may become externally-managed and “detached” from
 Eldev itself (create an issue if you are interested).  For now,
@@ -2224,7 +2224,6 @@ if you want a special command for your own needs, for example.  Or
 maybe in `Eldev-local` — if you need something extra only for one
 specific project that you maintain.
 
-[#hooks]
 === Writing builders
 
 Eldev build system provides standard builders that cover all basic
@@ -2452,6 +2451,8 @@ FIXME
    - `eldev-main-fileset`
    - `eldev-test-fileset`
    - `eldev-standard-excludes`
+
+[#hooks]
 === Hooks
 
 Eldev defines several hooks executed at different times (more might be
