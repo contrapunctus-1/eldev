@@ -2088,8 +2088,8 @@ to file `Eldev` of your project.  For example:
 As for other configuration, you can also do it in `Eldev-local` or
 <<configuration-files,other places>>.
 
-In future, plugins may become externally-managed and “detached” from
-Eldev itself (create an issue if you are interested).  For now,
+In the future, plugins may become externally-managed and “detached”
+from Eldev itself (create an issue if you are interested).  For now,
 however, Eldev provides two built-in plugins.
 
 You can check if a project has any plugins activated — and
