@@ -308,6 +308,7 @@ touch code that you don’t plan running.
 === XXX How to specify project files
 ...when they are not detected by the defaults.
 // List some common cases of adding files or directories
+
 === How to run specific linters
 Running all the linters at once is not always what you want, so you
 can just specify the name(s) of the linter(s) you want on the command
