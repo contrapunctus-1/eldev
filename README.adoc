@@ -2222,6 +2222,13 @@ if you want a special command for your own needs, for example.  Or
 maybe in `Eldev-local` — if you need something extra only for one
 specific project that you maintain.
 
+=== Hooks
+Eldev defines several hooks executed at different times (more might be
+added later).  Due to historical reasons, Eldev doesn’t follow the
+Emacs naming convention, where `-hook` is only used for standard hooks
+(i.e. those not accepting any arguments), and `-functions` for other
+cases - functions for many of the hooks listed below do receive
+arguments.
 === Writing builders
 
 Eldev build system provides standard builders that cover all basic
@@ -2452,13 +2459,6 @@ FIXME
 
 [#hooks]
 === Hooks
-
-Eldev defines several hooks executed at different times (more might be
-added later).  Due to historical reasons, Eldev doesn’t follow the
-Emacs naming convention, where `-hook` is only used for standard hooks
-(i.e. those not accepting any arguments), and `-functions` for other
-cases - functions for many of the hooks listed below do receive
-arguments.
 
 `eldev-executing-command-hook (COMMAND)`::
 
