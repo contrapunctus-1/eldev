@@ -2013,7 +2013,7 @@ project uses is already supported (currently <<ert,ERT>> and
 <<buttercup,Buttercup>>).
 
 [#debugging-features]
-== Debugging features
+=== Debugging features
 
 Eldev comes with lots of different options and other features that can
 help you debug problems both in your project, Eldev itself or your
