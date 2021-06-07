@@ -1833,7 +1833,7 @@ It can also make sense to change the variable’s value in `Eldev-local`
 if you want certain features to always be available for quick testing.
 
 
-=== Running Emacs
+=== Running Emacs from Eldev
 
 Sometimes you want to run Emacs with _just_ your project installed and
 see how it works without any customization.  You can achieve this in
