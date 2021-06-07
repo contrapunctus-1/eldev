@@ -2072,7 +2072,7 @@ Eldev scripts.
   debugging and avoid committing such changes.
 
 
-== Plugins
+=== Plugins
 
 {since-0-3} Plugins are activatable extensions to Eldev functionality.
 They provide features that are not needed for most projects and are
@@ -2115,7 +2115,7 @@ There is currently no way to list all available plugins.  However, as
 of yet there are only two plugins anyway.
 
 [#autoloads-plugin]
-=== autoloads
+==== autoloads
 
 {since-0-6} A plugin that enables automatic collection of functions
 and other forms marked with `;;;###autoload` cookie in project’s `.el`
@@ -2147,7 +2147,7 @@ knows how to keep the autoloads file up-to-date in all local
 dependencies, regardless of their loading mode.
 
 [#undercover-plugin]
-=== undercover
+==== undercover
 
 {since-0-3} This built-in plugin provides integration with
 {uri-undercover}[undercover] tool that generates coverage reports for
